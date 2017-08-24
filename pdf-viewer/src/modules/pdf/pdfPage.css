@@ -1,0 +1,33 @@
+.pdf-viewer {
+    width: 100%;
+    position: relative;
+    background-color: #f2f4f5;
+    box-shadow: 0 0 0px 1px #e2e2e2;
+}
+.pdf-viewer header {
+    background-color: #f2f4f5;
+    padding: 20px 0;
+    box-shadow: 0 0 32px 1px #989191;
+    border-bottom: 1px solid #f0f2f3;
+    position: fixed;
+    width: 100%;
+}
+.pdf-page {
+    box-shadow: 0 0 12px 7px #e6e6e6;
+    background-color: white;
+}
+.pdf-page:not(:last-of-type) {
+    margin-bottom: 25px;
+}
+.pdf-viewer div,.pdf-viewer canvas {
+    width: 696px;
+}
+.pdf-viewer .pdf-control{
+    position: absolute;
+    bottom: 15px;
+    width: 300px;
+}
+
+.pdf-viewer .pdf-control div {
+    width: auto;
+}
