@@ -3,78 +3,60 @@ HOST: http://polls.apiblueprint.org/
 
 # Graspe
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Api for Learning platform
 
-## Questions Collection [/questions]
+## Organization's Referral System  [/organizations/1/referral-system]
 
-### List All Questions [GET]
+### Create referral system [POST]
 
-+ Response 200 (application/json)
-    
-        [
-            {
-                "question": "test",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
-
-### Create a New Question [POST]
-
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+Create referral system for specific organization
 
 + Request (application/json)
 
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+            "rewards_type": 1,
+            "referral_points": 5,
+            "subscription_months_count": 2,
+            "prize_title": "iPhone",
+            "image_url": "https://amazon.cloud/iphone.jpg"
         }
-
+        
 + Response 201 (application/json)
 
-    + Headers
+        {
+            "status": 1,
+            "message": "The referral successfully created"
+        }
 
-            Location: /questions/2
 
-    + Body
+### Get referral system [GET]
 
+Get referral system for specific organization
+
++ Response 200 (application/json)
+
+
+        [
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
+                "id":1,
+                "creator_id":3,
+                "rewards_type":2,
+                "referral_points":20,
+                "subscription_months_count":30,
+                "prize_title":"Surprise",
+                "image_url":"\/prize.jpg",
+                "created_at":null,
+                "updated_at":null
+            },
+            {
+                "id":2,
+                "creator_id":1,
+                "rewards_type":1,
+                "referral_points":5,
+                "subscription_months_count":2,
+                "prize_title":null,
+                "image_url":null,
+                "created_at":"2017-08-24 15:29:14",
+                "updated_at":"2017-08-24 15:29:14"
             }
+        ]
