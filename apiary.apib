@@ -13,13 +13,19 @@ Create referral system for specific organization
 
 + Request (application/json)
 
-        {
-            "rewards_type": 1,
-            "referral_points": 5,
-            "subscription_months_count": 2,
-            "prize_title": "iPhone",
-            "image_url": "https://amazon.cloud/iphone.jpg"
-        }
+        [
+                {
+                    "rewards_type": 1,
+                    "referral_points": 3,
+                    "subscription_months_count": 2
+                },
+                {
+                    "rewards_type": 2,
+                    "referral_points": 300,
+                    "prize_title": "iPhone",
+                    "image_url": "https://amazon.cloud/iphone.jpg"
+                }
+        ]
         
 + Response 201 (application/json)
 
