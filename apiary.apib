@@ -15,8 +15,8 @@ Create referral system for specific organization
 + `prize_image_url` and `prize_description` is `optional`
 
 + Request (application/json)
-
-        [
+        
+        data:[
                 {
                     "rewards_type": 1,
                     "referral_points": 3,
@@ -31,13 +31,17 @@ Create referral system for specific organization
                 }
         ]
         
-+ Response 201 (application/json)
++ Response 200 (application/json)      
 
-        {
-            "status": 1,
-            "message": "The referral successfully created"
-        }
-
+        {status:1 , msg:"The referral was successfully created."}
+        
++ Response 500 (application/json)        
+        
+        {status:0 , msg:"The referral was not created  successfully."}      
+        
++ Response 403 (application/json)        
+        
+        {status:0 , msg:"Only organization administrators can create referrals."}  
 
 ### Get referral system [GET]
 
@@ -69,3 +73,36 @@ Get referral system for specific organization
                 "updated_at":"2017-08-24 15:29:14"
             }
         ]
+        
+### Update referral system [/organizations/1/referral-system/update] 
+[POST]
+
+Update referral system for specific organization   
+
++ Request (application/json)
+       
+       data:[
+                {
+                    "rewards_type": 1,
+                    "referral_points": 3,
+                    "subscription_months_count": 2
+                },
+                {
+                    "rewards_type": 2,
+                    "referral_points": 300,
+                    "prize_title": "iPhone",
+                    "image_url": "https://amazon.cloud/iphone.jpg"
+                }
+        ]
+        
++ Response 200 (application/json)        
+
+        {status:1 , msg:"The referral was successfully updated."}
+        
++ Response 500 (application/json)        
+
+        {status:0 , msg:"The referral was not updated successfully."}       
+        
++ Response 403 (application/json)        
+
+        {status:0 , msg:"Only organization administrators can update referrals."}           
