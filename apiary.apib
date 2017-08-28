@@ -12,8 +12,8 @@ Api for Learning platform
 Create referral system for specific organization
 
 + Request (application/json)
-
-       data:[
+        
+        data:[
                 {
                     "rewards_type": 1,
                     "referral_points": 3,
@@ -27,15 +27,17 @@ Create referral system for specific organization
                 }
         ]
         
-+ Response 200 (application/json)        
++ Response 200 (application/json)      
+
         {status:1 , msg:"The referral was successfully created."}
         
 + Response 500 (application/json)        
+        
         {status:0 , msg:"The referral was not created  successfully."}      
         
 + Response 403 (application/json)        
+        
         {status:0 , msg:"Only organization administrators can create referrals."}  
-
 
 ### Get referral system [GET]
 
@@ -69,13 +71,13 @@ Get referral system for specific organization
             }
         ]
         
-### Update referral system [/organizations/1/referral-system/update][POST]
+### Update referral system [/organizations/1/referral-system/update] 
+[POST]
 
 Update referral system for specific organization   
 
-
 + Request (application/json)
-
+       
        data:[
                 {
                     "rewards_type": 1,
@@ -91,10 +93,13 @@ Update referral system for specific organization
         ]
         
 + Response 200 (application/json)        
+
         {status:1 , msg:"The referral was successfully updated."}
         
 + Response 500 (application/json)        
+
         {status:0 , msg:"The referral was not updated successfully."}       
         
 + Response 403 (application/json)        
+
         {status:0 , msg:"Only organization administrators can update referrals."}           
