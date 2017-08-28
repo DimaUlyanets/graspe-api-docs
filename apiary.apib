@@ -11,6 +11,9 @@ Api for Learning platform
 
 Create referral system for specific organization
 
++ `rewards_type` : `1` for subscription months, `2` for prize
++ `prize_image_url` and `prize_description` is `optional`
+
 + Request (application/json)
         
         data:[
@@ -23,7 +26,8 @@ Create referral system for specific organization
                     "rewards_type": 2,
                     "referral_points": 300,
                     "prize_title": "iPhone",
-                    "image_url": "https://amazon.cloud/iphone.jpg"
+                    "prize_image_url": "https://amazon.cloud/iphone.jpg",
+                    "prize_description": "New iPhone"
                 }
         ]
         
@@ -50,21 +54,20 @@ Get referral system for specific organization
             {
                 "id":1,
                 "creator_id":3,
-                "rewards_type":2,
+                "rewards_type":1,
                 "referral_points":20,
-                "subscription_months_count":30,
                 "prize_title":"Surprise",
-                "image_url":"\/prize.jpg",
+                "prize_image_url":"\/prize.jpg",
+                "prize_description":"description"
                 "created_at":null,
                 "updated_at":null
             },
             {
                 "id":2,
                 "creator_id":1,
-                "rewards_type":1,
+                "rewards_type":2,
                 "referral_points":5,
                 "subscription_months_count":2,
-                "prize_title":null,
                 "image_url":null,
                 "created_at":"2017-08-24 15:29:14",
                 "updated_at":"2017-08-24 15:29:14"
