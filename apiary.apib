@@ -5,6 +5,42 @@ HOST: http://polls.apiblueprint.org/
 
 Api for Learning platform
 
+## Users  [/users]
+
+### Create new user (registration) [POST]
+
++ `referral_code` is `optional`
+
++ Request (application/json)
+
+        {
+            "email": "test@example.com",
+            "name": "John Doe",
+            "password": "TestPassword0",
+            "referral_code": "dk6ndkb94m2v8r3"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "token": token,
+            "user": {...}
+        }
+
+## Organisations [/organizations]
+
+### Get organisation [/organizations/{id_or_url}] [GET]
+
++ `has_referral_system` : `boolean`, `true` if organisation owner has setted referral system. Otherwise `false`
+
++ Response 200 (application/json)
+
+        {
+            ...
+            "has_referral_system": true
+        }
+
+
 ## Organization's Referral System  [/organizations/1/referral-system]
 
 ### Create referral system [POST]
@@ -143,4 +179,32 @@ Update referral system for specific organization
                    "updated_at": null
                }
            ]
+        }
+
+
+### Check referral system updates [/organizations/1/referral-system/check] [GET]  
+
+Check if user has updates (new confirmed or potential referrals). 
+This endpoint would be requested frequently (every 30 - 60 seconds) to notify user about updates.
+
++ Response 200 (application/json)
+
+        {
+            "has_updates": true
+        }
+
+
+### Set or update referral's inviter [/organizations/1/referral-system/inviter] [POST]  
+
+When existing user opens organisation via referral link we need to set (or update) his inviter.
+
++ Request (application/json)
+        {
+            "referral_code": "dk6ndkb94m2v8r3"
+        }
+        
++ Response 200 (application/json)
+
+        {
+            "msg": "Referral's inviter was updated."
         }
