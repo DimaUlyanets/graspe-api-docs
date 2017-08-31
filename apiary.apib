@@ -85,30 +85,47 @@ Get referral system for specific organization
 
 + Response 200 (application/json)
 
-
-        [
-            {
-                "id":1,
-                "creator_id":3,
-                "rewards_type":1,
-                "referral_points":20,
-                "prize_title":"Surprise",
-                "prize_image_url":"\/prize.jpg",
-                "prize_description":"description"
-                "created_at":null,
-                "updated_at":null
-            },
-            {
-                "id":2,
-                "creator_id":1,
-                "rewards_type":2,
-                "referral_points":5,
-                "subscription_months_count":2,
-                "image_url":null,
-                "created_at":"2017-08-24 15:29:14",
-                "updated_at":"2017-08-24 15:29:14"
-            }
-        ]
+        {
+            "referrals": [
+                {
+                    "id": 1,
+                    "creator_id": 3,
+                    "rewards_type": 2,
+                    "referral_points": 20,
+                    "subscription_months_count": null,
+                    "prize_title": "Surprise",
+                    "prize_image_url": "/prize.jpg",
+                    "prize_description": "Prize Description goes here.",
+                    "created_at": null,
+                    "updated_at": null
+                },
+                {
+                    "id": 3,
+                    "creator_id": 1,
+                    "rewards_type": 2,
+                    "referral_points": 15,
+                    "subscription_months_count": null,
+                    "prize_title": "banan",
+                    "prize_image_url": "dewdew",
+                    "prize_description": "233e23ee2",
+                    "created_at": null,
+                    "updated_at": null
+                },
+                {
+                    "id": 4,
+                    "creator_id": 1,
+                    "rewards_type": 2,
+                    "referral_points": 15,
+                    "subscription_months_count": null,
+                    "prize_title": "banan",
+                    "prize_image_url": "dewdew",
+                    "prize_description": "233e23ee2",
+                    "created_at": null,
+                    "updated_at": null
+                }
+            ],
+            "user_point": 46
+}
         
 ### Update referral system [/organizations/1/referral-system/update] 
 [POST]
