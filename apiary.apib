@@ -5,6 +5,42 @@ HOST: http://polls.apiblueprint.org/
 
 Api for Learning platform
 
+## Users  [/users]
+
+### Create new user (registration) [POST]
+
++ `referral_code` is `optional`
+
++ Request (application/json)
+
+        {
+            "email": "test@example.com",
+            "name": "John Doe",
+            "password": "TestPassword0",
+            "referral_code": "dk6ndkb94m2v8r3"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "token": token,
+            "user": {...}
+        }
+
+## Organisations [/organizations]
+
+### Get organisation [/organizations/{id_or_url}] [GET]
+
++ `has_referral_system` : `boolean`, `true` if organisation owner has setted referral system. Otherwise `false`
+
++ Response 200 (application/json)
+
+        {
+            ...
+            "has_referral_system": true
+        }
+
+
 ## Organization's Referral System  [/organizations/1/referral-system]
 
 ### Create referral system [POST]
@@ -106,4 +142,69 @@ Update referral system for specific organization
         
 + Response 403 (application/json)        
 
-        {status:0 , msg:"Only organization administrators can update referrals."}           
+        {status:0 , msg:"Only organization administrators can update referrals."}        
+        
+### Get referral system subscribers [/organizations/1/referral-system/subscribers] [GET]        
+
++ Response 200 (application/json)
+        {
+           "potential": [
+               {
+                   "id": 1,
+                   "inviter_id": "1",
+                   "user_id": "2",
+                   "subscriber_date": null,
+                   "status_id": "1",
+                   "created_at": null,
+                   "updated_at": null
+               },
+               {
+                   "id": 3,
+                   "inviter_id": "12",
+                   "user_id": "44",
+                   "subscriber_date": null,
+                   "status_id": "1",
+                   "created_at": 2017-08-24 00:00:00,
+                   "updated_at": null
+               }
+           ],
+           "confirmed": [
+               {
+                   "id": 2,
+                   "inviter_id": "4",
+                   "user_id": "5",
+                   "subscriber_date": 2017-08-24 00:00:00,
+                   "status_id": "2",
+                   "created_at": 2017-07-24 00:00:00,
+                   "updated_at": null
+               }
+           ]
+        }
+
+
+### Check referral system updates [/organizations/1/referral-system/check] [GET]  
+
+Check if user has updates (new confirmed or potential referrals). 
+This endpoint would be requested frequently (every 30 - 60 seconds) to notify user about updates.
+
++ Response 200 (application/json)
+
+        {
+            "has_updates": true
+        }
+
+
+### Set or update referral's inviter [/organizations/1/referral-system/inviter] [POST]  
+
+When existing user opens organisation via referral link we need to set (or update) his inviter.
+
++ Request (application/json)
+        {
+            "referral_code": "dk6ndkb94m2v8r3"
+        }
+        
++ Response 200 (application/json)
+
+        {
+            "msg": "Referral's inviter was updated."
+        }
