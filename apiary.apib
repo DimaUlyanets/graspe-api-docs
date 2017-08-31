@@ -127,8 +127,8 @@ Get referral system for specific organization
             "user_referral_points": 46
 }
         
-### Update referral system [/organizations/1/referral-system/update] 
-[POST]
+### Update referral system [/organizations/1/referral-system] 
+[PUT]
 
 Update referral system for specific organization   
 
@@ -136,11 +136,13 @@ Update referral system for specific organization
        
        data:[
                 {
+                    "id": 1,
                     "rewards_type": 1,
                     "referral_points": 3,
                     "subscription_months_count": 2
                 },
                 {
+                    "id": 2,    
                     "rewards_type": 2,
                     "referral_points": 300,
                     "prize_title": "iPhone",
@@ -223,5 +225,18 @@ When existing user opens organisation via referral link we need to set (or updat
 + Response 200 (application/json)
 
         {
-            "msg": "Referral's inviter was updated."
+           "status":1, "msg": "Referral's inviter was updated."
         }
+        
++ Response 409 (application/json)
+
+        {
+           "status":0, "msg": "This user is already confirmed subscriber."
+        }
+        
+        
++ Response 404 (application/json)
+
+        {
+           "status":0, "msg": "This referral link is incorrect."
+        }              
