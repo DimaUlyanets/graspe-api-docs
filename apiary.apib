@@ -43,9 +43,9 @@ Api for Learning platform
 
 ## Organization's Referral System  [/organizations/1/referral-system]
 
-### Create referral system [POST]
+### Set referral system (rewards) [POST]
 
-Create referral system for specific organization
+Create or update referral system for specific organization
 
 + `rewards_type` : `1` for subscription months, `2` for prize
 + `prize_image_url` and `prize_description` is `optional`
@@ -110,39 +110,6 @@ Get referral system for specific organization
             }
         ]
         
-### Update referral system [/organizations/1/referral-system/update] 
-[POST]
-
-Update referral system for specific organization   
-
-+ Request (application/json)
-       
-       data:[
-                {
-                    "rewards_type": 1,
-                    "referral_points": 3,
-                    "subscription_months_count": 2
-                },
-                {
-                    "rewards_type": 2,
-                    "referral_points": 300,
-                    "prize_title": "iPhone",
-                    "prize_image_url": "https://amazon.cloud/iphone.jpg",
-                    "prize_description": "New iPhone"
-                }
-        ]
-        
-+ Response 200 (application/json)        
-
-        {status:1 , msg:"The referral was successfully updated."}
-        
-+ Response 500 (application/json)        
-
-        {status:0 , msg:"The referral was not updated successfully."}       
-        
-+ Response 403 (application/json)        
-
-        {status:0 , msg:"Only organization administrators can update referrals."}        
         
 ### Get referral system subscribers [/organizations/1/referral-system/subscribers] [GET]        
 
