@@ -250,3 +250,58 @@ When existing user opens organisation via referral link we need to set (or updat
         {
            "status":0, "msg": "This referral link is incorrect."
         }              
+
+### Claim Reward [ /organizations/{id}/referral-system/claim-reward] [GET]         
+
+
++ case if `rewards_type` : `1` 
+
++ Request (application/json)
+        {
+            "id": "1",
+            "city": "Yerevan",
+            "zip_code": "4831",
+            "street_address":"Mamikonyanc 48"
+        }
+
++ case if `rewards_type` : `2` 
+
++ Request (application/json)
+        {
+            "id": "2"
+        }
+
++ Response 200 (application/json)
+
+        {
+           "status":1, "msg": "claim success"
+        }
+        
++ Response 404 (application/json)
+
+        {
+           "status":0, "msg": "You have not enough points."
+        }        
+        
++ Response 400 (application/json)
+        {
+            "status": 0,
+            "msg": {
+                "city": [
+                    "The city field is required."
+                ],
+                "zip_code": [
+                    "The zip code field is required."
+                ],
+                "street_address": [
+                    "The street address field is required."
+                ]
+            }
+        } 
+        
+        
++ Response 500 (application/json)
+        {
+            "status": 0,
+            "msg": "Something went wrond during e-mail sending."
+        }     
