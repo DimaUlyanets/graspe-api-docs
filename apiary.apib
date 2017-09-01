@@ -85,33 +85,89 @@ Get referral system for specific organization
 
 + Response 200 (application/json)
 
+        {
+            "rewards": [
+                {
+                    "id": 1,
+                    "creator_id": 3,
+                    "rewards_type": 2,
+                    "referral_points": 20,
+                    "subscription_months_count": null,
+                    "prize_title": "Surprise",
+                    "prize_image_url": "/prize.jpg",
+                    "prize_description": "Prize Description goes here.",
+                    "created_at": null,
+                    "updated_at": null
+                },
+                {
+                    "id": 3,
+                    "creator_id": 1,
+                    "rewards_type": 2,
+                    "referral_points": 15,
+                    "subscription_months_count": null,
+                    "prize_title": "banan",
+                    "prize_image_url": "dewdew",
+                    "prize_description": "233e23ee2",
+                    "created_at": null,
+                    "updated_at": null
+                },
+                {
+                    "id": 4,
+                    "creator_id": 1,
+                    "rewards_type": 2,
+                    "referral_points": 15,
+                    "subscription_months_count": null,
+                    "prize_title": "banan",
+                    "prize_image_url": "dewdew",
+                    "prize_description": "233e23ee2",
+                    "created_at": null,
+                    "updated_at": null
+                }
+            ],
+            "user_referral_points": 46
+}
+        
 
-        [
-            {
-                "id":1,
-                "creator_id":3,
-                "rewards_type":1,
-                "referral_points":20,
-                "prize_title":"Surprise",
-                "prize_image_url":"\/prize.jpg",
-                "prize_description":"description"
-                "created_at":null,
-                "updated_at":null
-            },
-            {
-                "id":2,
-                "creator_id":1,
-                "rewards_type":2,
-                "referral_points":5,
-                "subscription_months_count":2,
-                "image_url":null,
-                "created_at":"2017-08-24 15:29:14",
-                "updated_at":"2017-08-24 15:29:14"
-            }
+### Update referral system [/organizations/1/referral-system] 
+[PUT]
+
+Update referral system for specific organization   
+
++ Request (application/json)
+       
+       data:[
+                {
+                    "id": 1,
+                    "rewards_type": 1,
+                    "referral_points": 3,
+                    "subscription_months_count": 2
+                },
+                {
+                    "id": 2,    
+                    "rewards_type": 2,
+                    "referral_points": 300,
+                    "prize_title": "iPhone",
+                    "prize_image_url": "https://amazon.cloud/iphone.jpg",
+                    "prize_description": "New iPhone"
+                }
         ]
         
++ Response 200 (application/json)        
+
+        {status:1 , msg:"The referral was successfully updated."}
+        
++ Response 500 (application/json)        
+
+        {status:0 , msg:"The referral was not updated successfully."}       
+        
++ Response 403 (application/json)        
+
+        {status:0 , msg:"Only organization administrators can update referrals."}        
         
 ### Get referral system subscribers [/organizations/1/referral-system/subscribers] [GET]        
+
++ `created_at`: date of registration
++ `subscriber_date`: date of subscription
 
 + Response 200 (application/json)
         {
@@ -123,7 +179,9 @@ Get referral system for specific organization
                    "subscriber_date": null,
                    "status_id": "1",
                    "created_at": null,
-                   "updated_at": null
+                   "updated_at": null,
+                   "is_new": true,
+                   "user_name: "John Doe"
                },
                {
                    "id": 3,
@@ -132,7 +190,9 @@ Get referral system for specific organization
                    "subscriber_date": null,
                    "status_id": "1",
                    "created_at": 2017-08-24 00:00:00,
-                   "updated_at": null
+                   "updated_at": null,
+                   "is_new": false,
+                   "user_name: "Test User1"
                }
            ],
            "confirmed": [
@@ -143,7 +203,9 @@ Get referral system for specific organization
                    "subscriber_date": 2017-08-24 00:00:00,
                    "status_id": "2",
                    "created_at": 2017-07-24 00:00:00,
-                   "updated_at": null
+                   "updated_at": null,
+                   "is_new": false,
+                   "user_name: "Test User2"
                }
            ]
         }
@@ -173,5 +235,18 @@ When existing user opens organisation via referral link we need to set (or updat
 + Response 200 (application/json)
 
         {
-            "msg": "Referral's inviter was updated."
+           "status":1, "msg": "Referral's inviter was updated."
         }
+        
++ Response 409 (application/json)
+
+        {
+           "status":0, "msg": "This user is already confirmed subscriber."
+        }
+        
+        
++ Response 404 (application/json)
+
+        {
+           "status":0, "msg": "This referral link is incorrect."
+        }              
