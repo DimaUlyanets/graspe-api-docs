@@ -43,9 +43,9 @@ Api for Learning platform
 
 ## Organization's Referral System  [/organizations/1/referral-system]
 
-### Create referral system [POST]
+### Set referral system (rewards) [POST]
 
-Create referral system for specific organization
+Create or update referral system for specific organization
 
 + `rewards_type` : `1` for subscription months, `2` for prize
 + `prize_image_url` and `prize_description` is `optional`
@@ -127,6 +127,7 @@ Get referral system for specific organization
             "user_referral_points": 46
 }
         
+
 ### Update referral system [/organizations/1/referral-system] 
 [PUT]
 
