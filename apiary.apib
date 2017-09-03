@@ -251,14 +251,14 @@ When existing user opens organisation via referral link we need to set (or updat
            "status":0, "msg": "This referral link is incorrect."
         }              
 
-### Claim Reward [ /organizations/{id}/referral-system/claim-reward] [GET]         
+### Claim Reward [ /organizations/{id}/referral-system/claim-reward] [POST]         
 
 
 + case if `rewards_type` : `1` 
 
 + Request (application/json)
         {
-            "id": "1",
+            "reward_id": "1",
             "city": "Yerevan",
             "zip_code": "4831",
             "street_address":"Mamikonyanc 48"
@@ -305,3 +305,118 @@ When existing user opens organisation via referral link we need to set (or updat
             "status": 0,
             "msg": "Something went wrond during e-mail sending."
         }     
+        
+
+### Get Rewards History [ /organizations/{id}/referral-system/rewards-history] [GET]
+
+       
++ Response 200 (application/json)
+
+       [
+           {
+              "id":1,
+              "user_id":1,
+              "rewards_type":2,
+              "street_address":null,
+              "city":null,
+              "zip_code":null,
+              "subscription_months_count":30,
+              "prize_title":"Surprise",
+              "prize_description":"Prize Description goes here.",
+              "prize_image_url":"\/prize.jpg",
+              "status":"pending",
+              "created_at":"2017-09-03 12:06:22",
+              "updated_at":"2017-09-03 12:06:22"
+           },
+           {
+              "id":2,
+              "user_id":1,
+              "rewards_type":2,
+              "street_address":"test",
+              "city":"Yerevan",
+              "zip_code":"2555",
+              "subscription_months_count":30,
+              "prize_title":"Surprise",
+              "prize_description":"Prize Description goes here.",
+              "prize_image_url":"\/prize.jpg",
+              "status":"pending",
+              "created_at":"2017-09-03 12:17:53",
+              "updated_at":"2017-09-03 12:17:53"
+           },
+           {
+              "id":3,
+              "user_id":1,
+              "rewards_type":2,
+              "street_address":"test",
+              "city":"Yerevan",
+              "zip_code":"2555",
+              "subscription_months_count":30,
+              "prize_title":"Surprise",
+              "prize_description":"Prize Description goes here.",
+              "prize_image_url":"\/prize.jpg",
+              "status":"pending",
+              "created_at":"2017-09-03 12:19:40",
+              "updated_at":"2017-09-03 12:19:40"
+           },
+           {
+              "id":4,
+              "user_id":1,
+              "rewards_type":1,
+              "street_address":"test",
+              "city":"Yerevan",
+              "zip_code":"2555",
+              "subscription_months_count":2,
+              "prize_title":null,
+              "prize_description":null,
+              "prize_image_url":null,
+              "status":"pending",
+              "created_at":"2017-09-03 12:20:20",
+              "updated_at":"2017-09-03 12:20:20"
+           },
+           {
+              "id":5,
+              "user_id":1,
+              "rewards_type":1,
+              "street_address":"test",
+              "city":"Yerevan",
+              "zip_code":"2555",
+              "subscription_months_count":2,
+              "prize_title":null,
+              "prize_description":null,
+              "prize_image_url":null,
+              "status":"pending",
+              "created_at":"2017-09-03 12:20:24",
+              "updated_at":"2017-09-03 12:20:24"
+           },
+           {
+              "id":6,
+              "user_id":1,
+              "rewards_type":1,
+              "street_address":"test",
+              "city":"Yerevan",
+              "zip_code":"2555",
+              "subscription_months_count":2,
+              "prize_title":null,
+              "prize_description":null,
+              "prize_image_url":null,
+              "status":"fulfilled",
+              "created_at":"2017-09-03 12:25:02",
+              "updated_at":"2017-09-03 12:25:02"
+           },
+           {
+              "id":7,
+              "user_id":1,
+              "rewards_type":1,
+              "street_address":"test",
+              "city":"Yerevan",
+              "zip_code":"2555",
+              "subscription_months_count":2,
+              "prize_title":null,
+              "prize_description":null,
+              "prize_image_url":null,
+              "status":"fulfilled",
+              "created_at":"2017-09-03 12:57:52",
+              "updated_at":"2017-09-03 12:57:52"
+           }
+        ]
+        
