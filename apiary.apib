@@ -242,9 +242,8 @@ When existing user opens organisation via referral link we need to set (or updat
 
         {
            "status":0, "msg": "This user is already confirmed subscriber."
-        }
-        
-        
+        }         
+       
 + Response 404 (application/json)
 
         {
@@ -305,3 +304,51 @@ When existing user opens organisation via referral link we need to set (or updat
             "status": 0,
             "msg": "Something went wrond during e-mail sending."
         }     
+
+### Get user rewards history [/organizations/1/referral-system/rewards-history] [GET]  
+
++ Response 200 (application/json)
+
+       [
+           {
+                "id":1,
+                "creator_id":3,
+                "rewards_type":1,
+                "referral_points":20,
+                "prize_title":"Surprise",
+                "prize_image_url":"\/prize.jpg",
+                "prize_description":"description"
+                "created_at":null,
+                "updated_at":null,
+                "claimed_at":"2017-08-24 15:29:14"
+            },
+            {
+                "id":2,
+                "creator_id":1,
+                "rewards_type":2,
+                "referral_points":5,
+                "subscription_months_count":2,
+                "image_url":null,
+                "created_at":"2017-08-24 15:29:14",
+                "updated_at":"2017-08-24 15:29:14",
+                "claimed_at":"2017-08-24 15:29:14"
+            }
+       ]
+
+### Store image [/store-image] [POST]  
+
+   + Request (application/json)
+        {
+            "image": "image.png"
+        }
+
++ Response 200 (application/json) 
+   https://s3-eu-west-1.amazonaws.com/bck-lessons/images/b06d07e500068b18cca1e407141a97b0.png              
+ 
+ 
++ Response 400 (application/json) 
+         { status:0 , msg: ".txt is not valid extension."}      
+         
+ 
++ Response 404 (application/json) 
+         { status:0 , msg: "image not found."}  
