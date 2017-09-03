@@ -239,3 +239,23 @@ When existing user opens organisation via referral link we need to set (or updat
                 "claimed_at":"2017-08-24 15:29:14"
             }
        ]
+
+### Store image [/store-image] [POST]  
+
+   + Request (application/json)
+        {
+            "image": "image.png"
+        }
+
++ Response 200 (application/json) 
+   https://s3-eu-west-1.amazonaws.com/bck-lessons/images/b06d07e500068b18cca1e407141a97b0.png              
+ 
+ 
++ Response 400 (application/json) 
+         { status:0 , msg: ".txt is not valid extension."}      
+         
+ 
++ Response 404 (application/json) 
+         { status:0 , msg: "image not found."}       
+                 
+        
