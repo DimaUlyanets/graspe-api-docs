@@ -162,7 +162,25 @@ Update referral system for specific organization
         
 + Response 403 (application/json)        
 
-        {status:0 , msg:"Only organization administrators can update referrals."}        
+        {status:0 , msg:"Only organization administrators can update referrals."}
+        
+### Delete referral system [/organizations/1/referral-system] 
+[DELETE]
+
+Delete referral system for specific organization   
+
++ Request (application/json)
+       {
+           "referral_id": 1
+       }
+        
++ Response 200 (application/json)        
+
+        {"status":1, "msg":"The referral successfully deleted."}
+        
++ Response 404 (application/json)        
+
+        {"status":0, "msg":"You don't have any referrals to delete"}
         
 ### Get referral system subscribers [/organizations/1/referral-system/subscribers] [GET]        
 
