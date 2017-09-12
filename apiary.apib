@@ -176,6 +176,7 @@ Update referral system for specific organization
                    "id": 1,
                    "inviter_id": "1",
                    "user_id": "2",
+                   "org_id": "1",
                    "subscriber_date": null,
                    "status_id": "1",
                    "created_at": null,
@@ -187,6 +188,7 @@ Update referral system for specific organization
                    "id": 3,
                    "inviter_id": "12",
                    "user_id": "44",
+                   "org_id": "1",
                    "subscriber_date": null,
                    "status_id": "1",
                    "created_at": 2017-08-24 00:00:00,
@@ -200,6 +202,7 @@ Update referral system for specific organization
                    "id": 2,
                    "inviter_id": "4",
                    "user_id": "5",
+                   "org_id": "1",
                    "subscriber_date": 2017-08-24 00:00:00,
                    "status_id": "2",
                    "created_at": 2017-07-24 00:00:00,
@@ -303,5 +306,63 @@ When existing user opens organisation via referral link we need to set (or updat
 + Response 500 (application/json)
         {
             "status": 0,
-            "msg": "Something went wrond during e-mail sending."
-        }     
+            "msg": "Something went wrong during e-mail sending."
+        }
+        
+        
+### Get Reward History [ /organizations/{id}/referral-system/rewards-history] [GET]         
+
+
++ Response 200 (application/json)
+
+    {
+        "id": 1,
+        "user_id": 1,
+        "org_id": 1,
+        "rewards_type": 2,
+        "referral_points": 20,
+        "street_address": "Mamikonyants 48",
+        "city": "Yerevan",
+        "zip_code": "4831",
+        "subscription_months_count": 2,
+        "prize_title": "iPhone",
+        "prize_description": "New iPhone",
+        "prize_image_url": "image URL",
+        "status": "pending",
+        "created_at": "2017-09-12 00:00:00",
+        "updated_at": "2017-09-17 00:00:00"   
+    }  
+    
+    
+### Delete Reward [ /organizations/{id}/referral-system/] [DELETE]         
+
+
++ Request (application/json)
+
+        {
+            "reward_id": "1",
+        }
+
++ case if `reward_id` : null 
+
++ Response 404 (application/json)
+
+        {
+           "status":0, "msg": "reward_id is required field."
+        }
+        
++ Response 404 (application/json)
+
+        {
+           "status":0, "msg": "You don't have any rewards to delete."
+        }        
+        
++ Response 200 (application/json)
+
+        {
+            "status": 0,
+            "msg": {
+                "status":1, "msg":"The reward successfully deleted."
+            }
+        } 
+        
