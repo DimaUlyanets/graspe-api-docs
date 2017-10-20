@@ -304,4 +304,45 @@ When existing user opens organisation via referral link we need to set (or updat
         {
             "status": 0,
             "msg": "Something went wrond during e-mail sending."
-        }     
+        }
+        
+## Terms and Conditions  [/tac]
+
+### Get default TaC text [/tac] [GET]
+
++ Response 200 (application/json)
+
+        {
+            "tac": ...
+        }
+        
+### Get the latest version of TaC for specified organization [/tac/{org_id}] [GET]
+
++ Response 200 (application/json)
+
+        {
+            "tac": ...
+        }
+        
+        
+### Update the TaC for specified organization [/tac/{org_id}] [POST]
+
++ Request (application/json)
+
+        {
+            "tac": ...
+        }
+        
++ Response 200 (application/json)
+
+        {
+            "status": 1,
+            "msg": The TaC was successfully updated
+        }
+        
++ Response 500 (application/json)
+
+        {
+            "status": 0,
+            "msg": Something went wrong during TaC updating.
+        }
