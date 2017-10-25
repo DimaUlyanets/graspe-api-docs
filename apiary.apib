@@ -346,3 +346,27 @@ When existing user opens organisation via referral link we need to set (or updat
             "status": 0,
             "msg": Something went wrong during TaC updating.
         }
+        
+        
+### Get organization lessons, groups, classes and lesson requests [/organizations/{organisation_id}/feed/{limitParam}/{page}] [GET]
+
++Response 200 (application/json)
+
+        {
+           "total":4,
+           "per_page":"13",
+           "current_page":1,
+           "last_page":1,
+           "lessons": [...],
+           "groups": [...],
+           "classes": [...],
+           "lesson_requests": [...]
+        }
+        
++Response 404 (application/json)
+
+        {
+           "status":"0",
+           "msg":"The spicified resource was not found."
+        }
+        
