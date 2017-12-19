@@ -304,4 +304,85 @@ When existing user opens organisation via referral link we need to set (or updat
         {
             "status": 0,
             "msg": "Something went wrond during e-mail sending."
-        }     
+        }
+        
+        
+ ### MCQ Creation - Questions and answers [ /lessons/{lesson_id}/mcq] [POST]
+ 
+ + Request (application/json)
+        {
+            "skills": [
+            {
+              "id": 12,
+              "name": "Chemistry",
+              "questions": [
+                {
+                  "title": "Question title 1",
+                  "start_time": "01:20",
+                  "answers": [
+                    {
+                      "title": "Correct answer",
+                      "correct": true,
+                      "description": "Optional answer description"
+                    },
+                    {
+                      "title": "Wrong answer",
+                      "correct": false
+                    }
+                  ]
+                },
+                {
+                  "title": "Question title 2",
+                  "answers": [
+                    {
+                      "title": "Correct answer",
+                      "correct": true
+                    },
+                    {
+                      "title": "Wrong answer",
+                      "correct": false,
+                      "description": "Optional answer description"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Science",
+              "questions": [
+                {
+                  "title": "Question title 1",
+                  "answers": [
+                    {
+                      "title": "Correct answer",
+                      "correct": true
+                    },
+                    {
+                      "title": "Wrong answer",
+                      "correct": false,
+                      "description": "Optional answer description"
+                    }
+                  ]
+                },
+                {
+                  "title": "Question title 2",
+                  "answers": [
+                    {
+                      "title": "Correct answer",
+                      "correct": true
+                    },
+                    {
+                      "title": "Wrong answer",
+                      "correct": false
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+        
++ Response 200 (application/json)
+        {
+           "status":1, "msg": "The Question was successfully created."
+        }
