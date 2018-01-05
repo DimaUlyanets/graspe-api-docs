@@ -386,3 +386,49 @@ When existing user opens organisation via referral link we need to set (or updat
         {
            "status":1, "msg": "The Question was successfully created."
         }
+        
+        
+### Saving answers of User [ /lessons/{lesson_id}/mcq/answer] [POST]
+
++ Request (application/json)
+        {
+                "skill_id": 3,
+                "question_id": 8,
+                "answer_ids": "[1, 2, 3]"
+        }
+
++ Response 200 (application/json)
+        {
+           "status":1, "msg": "The answers successfully saved."
+        }
+        
++ Response 500 (application/json)
+        {
+           "status":0, "msg": "Something went wrong."
+        }
+        
+### Latest answers of User [ /lessons/{lesson_id}/mcq/answer] [GET]
+
++ Response 200 (application/json)
+        [
+                {
+                        "skill_id": 2,
+                        "question_id": 1,
+                        "answer_ids": "[1, 2, 3, 4]"
+                },
+                {
+                        "skill_id": 1,
+                        "question_id": 12,
+                        "answer_ids": "[1, 2]"
+                },
+                {
+                        "skill_id": 3,
+                        "question_id": 8,
+                        "answer_ids": "[1, 2, 3]"
+                }
+        ]
+        
++ Response 404 (application/json)
+        {
+           "status":0, "msg": "The User has no answers."
+        }
